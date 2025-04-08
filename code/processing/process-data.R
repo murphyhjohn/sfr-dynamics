@@ -250,6 +250,32 @@ dat <- dat_svi %>%
     rate_sfr_1000 = rate_sfr * 1000
   )
 
+labelled::var_label(dat) <- c(
+  "FIPS code",
+  "State",
+  "State Abbreviation",
+  "County",
+  "Population",
+  "SVI Theme 1",
+  "SVI Theme 2",
+  "SVI Theme 3",
+  "SVI Theme 4",
+  "SVI Overall",
+  "SFR Count",
+  "Average Temperature",
+  "Maximum Temperature",
+  "ID",
+  "Average Precipitation",
+  "Health Shortage Area",
+  "Rural Urban Continuum Code",
+  "RUCC Description",
+  "Veterinary Care Accessibility Score",
+  "Dog Population",
+  "Dog to Population Ratio",
+  "SFR Rate",
+  "SFR Rate times 1000"
+)
+
 # Save as rds ==================================================================
 saveRDS(dat, here::here("data/processed/clean-data.rds"))
 
