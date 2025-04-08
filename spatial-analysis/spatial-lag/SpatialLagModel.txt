@@ -1,0 +1,42 @@
+>>03/07/24 11:35:57
+REGRESSION
+----------
+SUMMARY OF OUTPUT: SPATIAL LAG MODEL - MAXIMUM LIKELIHOOD ESTIMATION
+Data set            : SFR
+Spatial Weight      : SFR
+Dependent Variable  :  SFR_Rate_x  Number of Observations: 3143
+Mean dependent var  :    0.178577  Number of Variables   :    9
+S.D. dependent var  :    0.596541  Degrees of Freedom    : 3134
+Lag coeff.   (Rho)  :    0.661271
+
+R-squared           :    0.417566  Log likelihood        :    -2143.58
+Sq. Correlation     : -            Akaike info criterion :     4305.16
+Sigma-square        :    0.207266  Schwarz criterion     :     4359.63
+S.E of regression   :    0.455265
+
+-----------------------------------------------------------------------------
+       Variable       Coefficient     Std.Error       z-value    Probability
+-----------------------------------------------------------------------------
+      W_SFR_Rate_x      0.661271      0.0170088        38.8782     0.00000
+          CONSTANT    -0.0783637      0.0552887       -1.41736     0.15638
+        RPL_THEME3     -0.176465      0.0389181       -4.53425     0.00001
+        Average_Te    0.00212955     0.00127336        1.67238     0.09445
+        Average_Pr    0.00164539    0.000690534        2.38278     0.01718
+        Health_Sho  -0.000810755      0.0164598     -0.0492566     0.96071
+         RUCC_2013    0.00461467     0.00362716        1.27225     0.20328
+              VCAS   -0.00121197    0.000316974       -3.82357     0.00013
+        Dog_pop_ra      0.257658       0.114906        2.24234     0.02494
+-----------------------------------------------------------------------------
+
+REGRESSION DIAGNOSTICS
+DIAGNOSTICS FOR HETEROSKEDASTICITY 
+RANDOM COEFFICIENTS
+TEST                                     DF      VALUE        PROB
+Breusch-Pagan test                       7      3222.8262     0.00000
+
+DIAGNOSTICS FOR SPATIAL DEPENDENCE
+SPATIAL LAG DEPENDENCE FOR WEIGHT MATRIX : SFR
+TEST                                     DF      VALUE        PROB
+Likelihood Ratio Test                    1      1083.1928     0.00000
+============================== END OF REPORT ================================
+

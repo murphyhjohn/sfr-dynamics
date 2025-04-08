@@ -1,0 +1,41 @@
+>>03/09/24 20:21:11
+REGRESSION
+----------
+SUMMARY OF OUTPUT: SPATIAL LAG MODEL - MAXIMUM LIKELIHOOD ESTIMATION
+Data set            : Model
+Spatial Weight      : Model
+Dependent Variable  :  SFR_Rate_x  Number of Observations: 2743
+Mean dependent var  :    0.204619  Number of Variables   :    8
+S.D. dependent var  :    0.634371  Degrees of Freedom    : 2735
+Lag coeff.   (Rho)  :    0.631429
+
+R-squared           :    0.407135  Log likelihood        :    -2035.39
+Sq. Correlation     : -            Akaike info criterion :     4086.79
+Sigma-square        :    0.238585  Schwarz criterion     :     4134.12
+S.E of regression   :    0.488451
+
+-----------------------------------------------------------------------------
+       Variable       Coefficient     Std.Error       z-value    Probability
+-----------------------------------------------------------------------------
+      W_SFR_Rate_x      0.631429      0.0180297        35.0216     0.00000
+          CONSTANT     -0.225293      0.0936165       -2.40655     0.01610
+        RPL_THEME3      -0.18859      0.0442862       -4.25844     0.00002
+        Average_Te    0.00392772     0.00156772        2.50537     0.01223
+        Average_Pr    0.00163774    0.000817279        2.00389     0.04508
+         RUCC_2013    0.00999882      0.0045037        2.22013     0.02641
+              VCAS  -0.000973545    0.000404396        -2.4074     0.01607
+        Dog_pop_ra      0.350388       0.137466        2.54891     0.01081
+-----------------------------------------------------------------------------
+
+REGRESSION DIAGNOSTICS
+DIAGNOSTICS FOR HETEROSKEDASTICITY 
+RANDOM COEFFICIENTS
+TEST                                     DF      VALUE        PROB
+Breusch-Pagan test                       6      2736.0425     0.00000
+
+DIAGNOSTICS FOR SPATIAL DEPENDENCE
+SPATIAL LAG DEPENDENCE FOR WEIGHT MATRIX : Model
+TEST                                     DF      VALUE        PROB
+Likelihood Ratio Test                    1       917.0068     0.00000
+============================== END OF REPORT ================================
+

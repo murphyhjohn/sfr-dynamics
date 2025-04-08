@@ -1,0 +1,42 @@
+>>03/07/24 11:36:36
+REGRESSION
+----------
+SUMMARY OF OUTPUT: SPATIAL ERROR MODEL - MAXIMUM LIKELIHOOD ESTIMATION 
+Data set            : SFR
+Spatial Weight      : SFR
+Dependent Variable  :  SFR_Rate_x  Number of Observations: 3143
+Mean dependent var  :    0.178577  Number of Variables   :    8
+S.D. dependent var  :    0.596541  Degrees of Freedom    : 3135
+Lag coeff. (Lambda) :    0.667589
+
+R-squared           :    0.417907  R-squared (BUSE)      : - 
+Sq. Correlation     : -            Log likelihood        :-2146.390190
+Sigma-square        :    0.207144  Akaike info criterion :     4308.78
+S.E of regression   :    0.455131  Schwarz criterion     :      4357.2
+
+-----------------------------------------------------------------------------
+       Variable       Coefficient     Std.Error       z-value    Probability
+-----------------------------------------------------------------------------
+          CONSTANT     -0.155068        0.11331       -1.36853     0.17115
+        RPL_THEME3     -0.268308      0.0511608       -5.24441     0.00000
+        Average_Te    0.00367531     0.00244686        1.50205     0.13308
+        Average_Pr    0.00451431     0.00147156         3.0677     0.00216
+        Health_Sho    0.00267967      0.0173884       0.154107     0.87753
+         RUCC_2013     0.0069749     0.00460842        1.51351     0.13015
+              VCAS   -0.00198619    0.000414235       -4.79484     0.00000
+        Dog_pop_ra      0.436297       0.208466        2.09289     0.03636
+            LAMBDA      0.667589      0.0170503        39.1541     0.00000
+-----------------------------------------------------------------------------
+
+REGRESSION DIAGNOSTICS
+DIAGNOSTICS FOR HETEROSKEDASTICITY 
+RANDOM COEFFICIENTS
+TEST                                     DF      VALUE        PROB
+Breusch-Pagan test                       7      3221.2076     0.00000
+
+DIAGNOSTICS FOR SPATIAL DEPENDENCE 
+SPATIAL ERROR DEPENDENCE FOR WEIGHT MATRIX : SFR
+TEST                                     DF      VALUE        PROB
+Likelihood Ratio Test                    1      1077.5696     0.00000
+============================== END OF REPORT ================================
+

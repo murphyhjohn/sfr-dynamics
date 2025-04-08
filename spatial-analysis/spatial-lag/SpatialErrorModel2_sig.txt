@@ -1,0 +1,41 @@
+>>03/09/24 20:22:08
+REGRESSION
+----------
+SUMMARY OF OUTPUT: SPATIAL ERROR MODEL - MAXIMUM LIKELIHOOD ESTIMATION 
+Data set            : Model
+Spatial Weight      : Model
+Dependent Variable  :  SFR_Rate_x  Number of Observations: 2743
+Mean dependent var  :    0.204619  Number of Variables   :    7
+S.D. dependent var  :    0.634371  Degrees of Freedom    : 2736
+Lag coeff. (Lambda) :    0.637985
+
+R-squared           :    0.407874  R-squared (BUSE)      : - 
+Sq. Correlation     : -            Log likelihood        :-2037.109015
+Sigma-square        :    0.238287  Akaike info criterion :     4088.22
+S.E of regression   :    0.488147  Schwarz criterion     :     4129.64
+
+-----------------------------------------------------------------------------
+       Variable       Coefficient     Std.Error       z-value    Probability
+-----------------------------------------------------------------------------
+          CONSTANT     -0.438936       0.189186       -2.32014     0.02033
+        RPL_THEME3     -0.308213      0.0578513       -5.32768     0.00000
+        Average_Te    0.00787067     0.00331096        2.37716     0.01745
+        Average_Pr    0.00449267     0.00163364         2.7501     0.00596
+         RUCC_2013     0.0113726     0.00542937        2.09464     0.03620
+              VCAS   -0.00200932     0.00046917       -4.28272     0.00002
+        Dog_pop_ra      0.668242       0.246176        2.71449     0.00664
+            LAMBDA      0.637985      0.0180776        35.2914     0.00000
+-----------------------------------------------------------------------------
+
+REGRESSION DIAGNOSTICS
+DIAGNOSTICS FOR HETEROSKEDASTICITY 
+RANDOM COEFFICIENTS
+TEST                                     DF      VALUE        PROB
+Breusch-Pagan test                       6      2736.0555     0.00000
+
+DIAGNOSTICS FOR SPATIAL DEPENDENCE 
+SPATIAL ERROR DEPENDENCE FOR WEIGHT MATRIX : Model
+TEST                                     DF      VALUE        PROB
+Likelihood Ratio Test                    1       913.5749     0.00000
+============================== END OF REPORT ================================
+
