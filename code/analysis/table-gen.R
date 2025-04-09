@@ -13,7 +13,7 @@ library(dplyr)
 ## SLR results
 
 # load model object
-fit1 <- readRDS(here::here("results/output/slr.rds"))
+fit1 <- readRDS(here::here("results/output/slr2016-2019.rds"))
 summary(fit1)
 
 t1 <- fit1 %>%
@@ -25,4 +25,5 @@ t1 <- fit1 %>%
 # save as png 
 gt::gtsave(t1, here::here("results/tables/slr_results.png"))
 
-# TODO: add hot/cold spot decription and spatial lag tables
+# TODO: other model results or just one final
+# TODO: add hot/cold spot description and spatial lag tables. One run in ArcGIS, you can save the output data as a csv file then upload back to R to get summary statistics, etc.

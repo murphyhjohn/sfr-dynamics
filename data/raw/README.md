@@ -1,5 +1,7 @@
 # data/raw
 
+-   `AllTBD2022_Public.xlsx` contains 2019-2022 count data of various tickborne disease cases by county in the US. Data downloaded from the CDC at <https://www.cdc.gov/ticks/data-research/facts-stats/geographic-distribution-of-tickborne-disease-cases.html>.
+
 -   `AvgTemp_2016-2019_US_County.csv` contains average temperature (from 2016-2019) in degrees F data for all counties in the US. Data downloaded from the National Centers for Environmental Information <https://www.ncei.noaa.gov/access/monitoring/climate-at-a-glance/county/mapping/110/tavg/201912/48/value>.
 
 -   `HealthShortageAreas_US_County.csv` contains health shortage area data by county in the US. Data downloaded from Rural Health Information Hub at <https://www.ruralhealthinfo.org/charts/5>. Note that the website has updated 2025 data, but the file here is from 2023.

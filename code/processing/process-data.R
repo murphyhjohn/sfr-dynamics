@@ -14,9 +14,15 @@ library(dplyr)
 # load data
 
 ## reported sfr data
+### 2016-2019
 raw_sfr <- read.csv(here::here(
   "data/raw/ReportedTickborneDisease_2016-2019_US_County-of-Residence.csv"
   ))
+
+### 2019-2022
+raw_sfr2 <- readxl::read_xlsx(here::here(
+  "data/raw/AllTBD2022_Public.xlsx"
+))
 
 ## 2018 social vulnerability index data
 raw_svi <- read.csv(here::here(
@@ -74,13 +80,28 @@ dat_sfr <- raw_sfr %>%
     fips=FIPS,
     state=State.Name,
     county=County.Name,
-    sfr_count=Spotted.fever.rickettsiosis
+    sfr_count1=Spotted.fever.rickettsiosis
   ) %>%
   mutate(
     county = stringr::str_remove(county, "\\s*(County|Parish)\\b")
     ) %>%
   filter(
     !state %in% c("Alaska", "Hawaii")
+  )
+
+dat_sfr2 <- raw_sfr2 %>%
+  select(
+    fips=FIPS,
+    state=State,
+    county=County,
+    sfr_count2=`Spotted fever rickettsiosis`
+  ) %>%
+  filter(
+    !state %in% c("Alaska", "Hawaii")
+  ) %>%
+  mutate(
+    fips = as.integer(stringr::str_replace(fips, "^0", "")),
+    sfr_count2 = as.integer(sfr_count2)
   )
 
 # clean svi data
@@ -105,7 +126,8 @@ dat_svi <- raw_svi %>%
   mutate(
     state=stringr::str_to_title(state),
     county=stringr::str_replace(county, "Doña Ana", "Dona Ana"),
-    across(where(is.numeric), ~ na_if(., -999))
+    across(where(is.numeric), ~ na_if(., -999)),
+    population = as.numeric(population)
   ) %>%
   filter(
     !state %in% c("Alaska", "Hawaii")
@@ -234,7 +256,8 @@ dat_vcas <- raw_vcas %>%
 
 # merge all data into one dataframe
 dat <- dat_svi %>%
-  left_join(dat_sfr, by= c("fips", "state", "county")) %>%
+  full_join(dat_sfr, by= c("fips", "state", "county")) %>%
+  full_join(dat_sfr2, by= c("fips", "state", "county")) %>%
   left_join(dat_avg_temp, by=c("county", "state")) %>%
   left_join(dat_max_temp, by=c("county", "state")) %>%
   left_join(dat_precip, by=c("county", "state")) %>%
@@ -246,8 +269,19 @@ dat <- dat_svi %>%
   # create dog_pop_ratio variable
   mutate(
     dog_pop_ratio = dog_pop / population,
-    rate_sfr = sfr_count / population,
-    rate_sfr_1000 = rate_sfr * 1000
+    rate_sfr1 = sfr_count1 / population,
+    rate_sfr1_1000 = rate_sfr1 * 1000,
+    rate_sfr2 = sfr_count2 / population,
+    rate_sfr2_1000 = rate_sfr2 * 1000,
+    sfr_count_total = sfr_count1 + sfr_count2,
+    rate_sfr_total = sfr_count_total / population,
+    rate_sfr_total_1000 = rate_sfr_total * 1000,
+    population_sd = TSPred::minmax(population, 
+                                   max = max(population, na.rm = TRUE),
+                                   min = min(population, na.rm = TRUE)),
+    dog_pop_sd = TSPred::minmax(dog_pop, 
+                                max = max(dog_pop, na.rm = TRUE),
+                                min = min(dog_pop, na.rm = TRUE))
   )
 
 labelled::var_label(dat) <- c(
@@ -261,7 +295,8 @@ labelled::var_label(dat) <- c(
   "SVI Theme 3",
   "SVI Theme 4",
   "SVI Overall",
-  "SFR Count",
+  "SFR Count 2016-2019",
+  "SFR Count 2019-2022",
   "Average Temperature",
   "Maximum Temperature",
   "ID",
@@ -272,11 +307,21 @@ labelled::var_label(dat) <- c(
   "Veterinary Care Accessibility Score",
   "Dog Population",
   "Dog to Population Ratio",
-  "SFR Rate",
-  "SFR Rate times 1000"
+  "SFR Rate 2016-2019",
+  "SFR Rate 2016-2019 times 1000",
+  "SFR Rate 2019-2022",
+  "SFR Rate 2019-2022 times 1000",
+  "SFR Count 2016-2022",
+  "SFR Rate 2016-2022",
+  "SFR Rate 2016-2022 times 1000",
+  "Population Standardized",
+  "Dog Population Standardized"
 )
 
 # Save as rds ==================================================================
 saveRDS(dat, here::here("data/processed/clean-data.rds"))
+
+# Save as csv ==================================================================
+write.csv(dat, here::here("data/processed/clean-data.csv"))
 
 # END OF SCRIPT ================================================================
